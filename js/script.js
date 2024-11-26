@@ -1,6 +1,7 @@
 let uploadedPdf = null;
 let modifiedPdf = null;
 let originalFileName = ""; 
+let uploadedImageUrl = "";
 
 document.getElementById("pdf-upload").addEventListener("change", async (event) => {
 	const file = event.target.files[0];
@@ -16,21 +17,31 @@ document.getElementById("pdf-upload").addEventListener("change", async (event) =
 		document.getElementById("pdf-viewer").src = pdfUrl;
 	} else {
 		alert("PDFファイルをアップロードしてください");
+		return;
 	}
 });
 
 // 画像選択ボタンの処理
 document.getElementById('logo-upload').addEventListener('change', function(event) {
     const file = event.target.files[0]; // 選択されたファイル
-    if (file) {
-        const reader = new FileReader();
+	if (file && file.type.startsWith("image/")) {
+		const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+		if (allowedTypes.includes(file.type)) {
+			const reader = new FileReader();
 
-        reader.onload = function(e) {
-            uploadedImageUrl = e.target.result; // Base64データURLを保持
-        }
+			reader.onload = function(e) {
+				uploadedImageUrl = e.target.result; // Base64データURLを保持
+			}
 
-        reader.readAsDataURL(file); // 画像をBase64形式で読み込む
-    }
+			reader.readAsDataURL(file); // 画像をBase64形式で読み込む
+		}else {
+			alert("jpeg、jpg、pngファイルをアップロードしてください");
+			return;
+		}
+	}else {
+		alert("イメージファイルをアップロードしてください");
+		return;
+	}
 });
 
 // ロゴ追加処理
