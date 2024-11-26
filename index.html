@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ロゴ追加</title>
+</head>
+<body>
+	<h1>ロゴ追加ツール</h1>
+	
+	<!-- PDFアップロード -->
+	<label for="pdf-upload">PDFをアップロードしてください:</label>
+	<input type="file" id="pdf-upload" accept="application/pdf">
+	
+	<br><br>
+
+	<!-- ロゴの種類を選択 -->
+	<label for="logo-upload">ロゴ画像をアップロード:</label>
+	<input type="file" id="logo-upload" accept="image">
+	
+	<br><br>
+	
+	<!-- ロゴ位置を選択するドロップダウン -->
+	<label for="logo-position">ロゴの位置を選択:</label>
+	<select id="logo-position">
+		<option value="top-left">左上</option>
+		<option value="top-right">右上</option>
+		<option value="bottom-left">左下</option>
+		<option value="bottom-right">右下</option>
+	</select>
+	
+	<br><br>
+	
+	<!-- ロゴのサイズ（高さ）を選択 -->
+	<label for="logo-size">ロゴの高さを入力 (幅は高さにより自動調整):</label>
+	<input type="text" id="logo-size" placeholder="数字を入力してください">
+	
+	<br><br>
+	
+	<label for="logo-margin">余白:</label>
+	<input type="text" id="logo-margin" placeholder="数字を入力してください">
+
+	<br><br>
+	
+	<!-- ロゴ追加ボタン -->
+	<button id="add-logo-btn">ロゴ追加</button>
+	
+	<!-- ダウンロードボタン -->
+	<button id="download-btn" style="display:none;">ダウンロード</button>
+	
+	<br><br>
+	
+	<!-- 編集されたPDFを表示するエリア -->
+	<div id="result">
+		<h2>PDFプレビュー</h2>
+		<iframe id="pdf-viewer" width="720" height="480" style="border: none;"></iframe>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
