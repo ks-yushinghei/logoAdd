@@ -72,12 +72,22 @@ document.getElementById("add-logo-btn").addEventListener("click", async () => {
 	
 	// ロゴのサイズを選択
 	const showHeight = document.getElementById("logo-size").value;
+
+	if(!showHeight){
+		alert("ロゴの高さを入力してください");
+		return;
+	}
 	
 	const ratio = showHeight / logoHeight;
 	
 	const showWidth = logoWidth * ratio;
 	
 	const logoMargin = document.getElementById("logo-margin").value;
+
+	if(!logoMargin){
+		alert("余白を入力してください");
+		return;
+	}
 	
 	// PDFの全ページにロゴを追加
 	const pages = newPdf.getPages();
